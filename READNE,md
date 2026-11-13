@@ -1,0 +1,44 @@
+# Employee Management System (REST API)
+
+A backend RESTful API built with **Node.js**, **Express.js**, and **MySQL** to store, retrieve, search, update, and manage employee records, job roles, and department assignments.
+
+---
+
+## Tech Stack
+
+- **Runtime:** Node.js
+- **Framework:** Express.js
+- **Database:** MySQL (`mysql2` with connection pooling & parameterized queries)
+- **Tools:** Postman, MySQL Workbench, Git & GitHub
+
+---
+
+## Key Features
+
+- **Normalized Relational Schema:** Two-table design (`departments` and `employees`) linked via a foreign key constraint (`ON DELETE SET NULL`, `ON UPDATE CASCADE`).
+- **Full Employee CRUD:** Create, retrieve, update (job roles, salary, department transfers), and delete employee records.
+- **Dynamic Search & Filtering:** Search employees by name or email, or filter by job role and department ID using SQL `LIKE` and `LEFT JOIN` queries.
+- **Department Management:** Create departments and retrieve department summaries with real-time employee counts (`COUNT` + `GROUP BY`).
+- **SQL Injection Protection:** Uses parameterized queries (`?` placeholders) across all database operations.
+
+---
+
+## Project Structure
+
+```text
+employee-management-system/
+├── config/
+│   └── db.js                    # MySQL connection pool setup
+├── controllers/
+│   ├── departmentController.js  # Business logic & SQL queries for departments
+│   └── employeeController.js    # CRUD & search SQL queries for employees
+├── routes/
+│   ├── departmentRoutes.js      # Department API endpoints
+│   └── employeeRoutes.js        # Employee API endpoints
+├── sql/
+│   └── schema.sql               # Database, tables, foreign keys & seed data
+├── .env                         # Environment variables (excluded from Git)
+├── .gitignore
+├── package.json
+├── README.md
+└── server.js                    # Express application entry point
